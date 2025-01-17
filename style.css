@@ -1,0 +1,625 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background-color: #f3f4f6;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-image 0.5s ease;
+}
+
+.container {
+    width: 100%;
+    min-width: 300px; /* 设置最小宽度 */
+    max-width: 1500px; /* 设置最大宽度 */
+    height: 600px; /* 设置固定高度 */
+    margin: 20px;
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* 设置两列布局 */
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+.left-side {
+    display: block;
+    position: relative;
+    background-image: url('bg.jpg');
+    background-size: cover;
+    background-position: center;
+}
+
+.left-content {
+    position: relative;
+    z-index: 2;
+    padding: 32px;
+    color: white;
+}
+
+.quote-box {
+    margin-bottom: 32px;
+    padding: 24px;
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(4px);
+    border-radius: 8px;
+}
+
+.quote-box h2 {
+    margin-bottom: 16px;
+    font-size: 24px;
+}
+
+.right-side {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 32px;
+    position: relative;
+}
+
+.form-container {
+    width: 100%;
+    max-width: 400px;
+    position: relative;
+    padding-top: 20px;
+}
+
+#formTitle {
+    text-align: center;
+    margin-bottom: 32px;
+    font-size: 32px;
+    font-weight: 500;
+    letter-spacing: 2px;
+}
+
+.input-group {
+    margin-bottom: 16px;
+}
+
+.checkbox-group {
+    display: none;
+    align-items: center;
+}
+
+.checkbox-group input[type="checkbox"] {
+    margin-right: 10px;
+}
+
+.toggle-form {
+    display: block;
+    margin-top: 16px;
+    text-align: center;
+    color: #3b82f6;
+    text-decoration: none;
+}
+
+@media (max-width: 767px) {
+    .container {
+        grid-template-columns: 1fr; /* 单列布局 */
+        height: auto; /* 自动高度 */
+    }
+
+    .left-side {
+        display: none; /* 隐藏左侧内容 */
+    }
+
+    body {
+        background-image: url('bg.jpg'); /* 设置背景图片 */
+        background-size: cover;
+        background-position: center;
+    }
+
+    .right-side {
+        padding: 16px; /* 减小内边距 */
+    }
+
+    .form-container {
+        max-width: 100%; /* 取消最大宽度限制 */
+    }
+}
+
+input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #e5e7eb;
+    border-radius: 6px;
+    font-size: 16px;
+    transition: border-color 0.2s;
+}
+
+input:focus {
+    outline: none;
+    border-color: #3b82f6;
+}
+
+button {
+    width: 100%;
+    padding: 12px;
+    background: #3b82f6;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+button:hover {
+    background: #2563eb;
+}
+
+.social-login {
+    margin-top: 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.social-buttons {
+    display: flex;
+    gap: 16px;
+}
+
+.social-button {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: #f3f4f6;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.social-button:hover {
+    background: #e5e7eb;
+}
+
+.toggle-form {
+    color: #3b82f6;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.toggle-form:hover {
+    text-decoration: underline;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes scaleIn {
+    from {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.fade-in {
+    animation: fadeIn 0.5s ease-out;
+}
+
+.slide-up {
+    animation: slideUp 0.3s ease-out;
+}
+
+.scale-in {
+    animation: scaleIn 0.4s ease-out;
+}
+
+#getCodeLink {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #3b82f6;
+    text-decoration: none;
+    font-size: 14px;
+    padding: 4px 8px;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+    min-width: 80px;
+    text-align: center;
+}
+
+#getCodeLink:hover {
+    background: rgba(147, 51, 234, 0.1);
+}
+
+#getCodeLink.disabled {
+    color: #999;
+    background: none;
+    cursor: not-allowed;
+}
+
+/* 设置按钮和面板样式 */
+.settings-btn {
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: #3b82f6;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    z-index: 1000;
+}
+
+.settings-btn:hover {
+    transform: rotate(30deg);
+    background: #2563eb;
+}
+
+.settings-panel {
+    position: fixed;
+    right: -300px;
+    bottom: 80px;
+    width: 280px;
+    background: white;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+    transition: right 0.3s ease;
+    z-index: 999;
+}
+
+.settings-panel.active {
+    right: 20px;
+}
+
+.theme-option {
+    margin-bottom: 20px;
+}
+
+.theme-option h3 {
+    margin-bottom: 10px;
+    color: #333;
+    font-size: 16px;
+}
+
+.color-picker-container {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-top: 10px;
+}
+
+.preset-colors {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.color-option {
+    width: 40px;
+    height: 40px;
+    border-radius: 8px;
+    cursor: pointer;
+    border: 2px solid transparent;
+    transition: all 0.2s ease;
+}
+
+.color-option:hover {
+    transform: scale(1.05);
+}
+
+.color-option.active {
+    border-color: currentColor;
+    transform: scale(1.05);
+}
+
+.custom-color-picker {
+    position: relative;
+    width: 40px;
+    height: 40px;
+}
+
+#colorPicker {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    width: 40px;
+    height: 40px;
+    padding: 0;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    overflow: hidden;
+    position: relative;
+    z-index: 1;
+}
+
+#colorPicker::-webkit-color-swatch-wrapper {
+    padding: 0;
+}
+
+#colorPicker::-webkit-color-swatch {
+    border: none;
+    border-radius: 50%;
+}
+
+#colorPicker::-moz-color-swatch {
+    border: none;
+    border-radius: 50%;
+}
+
+.custom-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #fff;
+    font-size: 12px;
+    pointer-events: none;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.3);
+    white-space: nowrap;
+    z-index: 2;
+}
+
+/* 深色模式样式 */
+body.dark-mode {
+    background-color: #1a1a1a;
+}
+
+.dark-mode .container {
+    background: #2d2d2d;
+}
+
+.dark-mode .right-side {
+    background: #2d2d2d;
+}
+
+@media (max-width: 767px) {
+    .dark-mode .container {
+        background: rgba(45, 45, 45, 0.8) !important;
+    }
+}
+
+.dark-mode .settings-panel {
+    background: #2d2d2d;
+    color: #fff;
+}
+
+.dark-mode .theme-option h3 {
+    color: #fff;
+}
+
+.dark-mode input {
+    background: #3d3d3d;
+    color: #fff;
+    border-color: #4d4d4d;
+}
+
+.dark-mode .form-container {
+    color: #fff;
+}
+
+/* 添加更多深色模式样式 */
+.dark-mode #formTitle {
+    color: #fff;
+}
+
+.dark-mode label {
+    color: #ccc !important;
+}
+
+.dark-mode .toggle-form {
+    color: var(--theme-color);
+}
+
+.dark-mode .color-option.active {
+    border-color: #fff;
+}
+
+.dark-mode input::placeholder {
+    color: #999;
+}
+
+.dark-mode .quote-box {
+    background: rgba(0, 0, 0, 0.7);
+}
+
+.toggle-switch {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 50px;
+    height: 24px;
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: .4s;
+    border-radius: 24px;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 16px;
+    width: 16px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    transition: .4s;
+    border-radius: 50%;
+}
+
+input:checked + .slider {
+    background-color: var(--theme-color);
+}
+
+input:checked + .slider:before {
+    transform: translateX(26px);
+}
+
+/* 深色模式下的开关特殊样式 */
+.dark-mode .slider {
+    background-color: #555;
+}
+
+/* 加载动画样式 */
+.loading-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    transition: opacity 0.5s ease, visibility 0.5s ease;
+}
+
+.loading-overlay.fade-out {
+    opacity: 0;
+    visibility: hidden;
+}
+
+.loading-spinner {
+    width: 50px;
+    height: 50px;
+    border: 3px solid var(--theme-color, #3b82f6);
+    border-top: 3px solid transparent;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+.dark-mode .loading-overlay {
+    background: #1a1a1a;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.remember-me {
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+}
+
+.remember-me input[type="checkbox"] {
+    margin-right: 8px;
+    cursor: pointer;
+}
+
+.label-text {
+    font-size: 14px;
+    color: #666;
+    cursor: pointer;
+}
+
+.dark-mode .checkbox-custom {
+    border-color: #4d4d4d;
+}
+
+.dark-mode .label-text {
+    color: #ccc;
+}
+
+/* 自定义弹窗样式 */
+#alertContainer {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    z-index: 10000;
+}
+
+.custom-alert {
+    padding: 20px;
+    border-radius: 8px;
+    color: white;
+    max-width: 300px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    transform: translateX(120%);
+    transition: all 0.3s ease;
+    height: auto;
+    margin-bottom: 0;
+    opacity: 1;
+}
+
+.custom-alert.show {
+    transform: translateX(0);
+}
+
+.custom-alert.fade-out {
+    opacity: 0;
+    margin-top: -100%;
+    margin-bottom: -10px;
+}
+
+.custom-alert.success {
+    background-color: #10b981;
+}
+
+.custom-alert.error {
+    background-color: #ef4444;
+}
+
+.custom-alert h2 {
+    margin: 0 0 8px 0;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.custom-alert h3 {
+    margin: 0;
+    font-size: 14px;
+    font-weight: normal;
+    opacity: 0.9;
+}

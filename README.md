@@ -1,6 +1,6 @@
 <h1 align="center">蔚蓝档案（BlueArchive）主题HTML用户页面</h1>
 <p align="center">
-<a href="https://github.com/xiaoy-awa/useros" target="_blank">Github</a> | <a href="https://gitee.com/xiaoy_awa/useros" target="_blank">Gitee</a>
+<a href="https://github.com/xiaoy-awa/bluearchive-login" target="_blank">Github</a> | <a href="https://gitee.com/xiaoy_awa/bluearchive-login/" target="_blank">Gitee</a>
 
 #### 介绍
 一个以蔚蓝档案（BlueArchive）为主题的登陆页面
